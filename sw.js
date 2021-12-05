@@ -1,3 +1,7 @@
+const URL = self.location.href
+let ruta=''
+URL.startsWith('https:')?ruta='/PWA-U2-P1/':ruta="/"
+
 self.addEventListener("install", event => {
     console.log("sw instalado")
 });
@@ -8,7 +12,7 @@ self.addEventListener("activate", event =>{
 
 self.addEventListener('fetch', event => {
     if(event.request.url.includes('.jpg')){
-        let response = fetch('/img/1.jpg')
+        let response = fetch(`${ruta}img/felino.jpg`)
         console.log("es una imagen")
         event.respondWith(response)
     }
